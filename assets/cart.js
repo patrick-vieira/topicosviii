@@ -32,9 +32,11 @@ class CartItems extends HTMLElement {
   onChange(event) {
     var value = event.target.value;
     
-    if(value > 3) {
+    if(value > 1) {
       value = 3;
     }
+
+    // aqui bloqueia o que vai ser enviado.
     this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
   }
 
