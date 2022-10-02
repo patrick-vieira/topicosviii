@@ -1,7 +1,6 @@
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
-    this.userEmail = document.getElementById('customer-email');
     this.addEventListener('click', (event) => {
       event.preventDefault();
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
@@ -10,7 +9,7 @@ class CartRemoveButton extends HTMLElement {
   }
 }
 
-userEmail2 = document.getElementById('customer-email');
+userEmail = document.getElementById('customer-email');
 
 customElements.define('cart-remove-button', CartRemoveButton);
 
@@ -31,7 +30,12 @@ class CartItems extends HTMLElement {
   }
 
   onChange(event) {
-    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
+    var value = event.target.value;
+    
+    if(value > 3) {
+      value = 3;
+    }
+    this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
   }
 
   getSectionsToRender() {
@@ -67,7 +71,6 @@ class CartItems extends HTMLElement {
       console.log(name);
     fetch('https://jsonplaceholder.typicode.com/todos/1')
     .then((response) => {
-      console.log(userEmail2);
       console.log(userEmail);
       return response.json();
     })
