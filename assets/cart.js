@@ -1,8 +1,7 @@
-import {User} from '@shopify/shopify-api/dist/rest-resources/2022-07/index.js';
-
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
+    this.userEmail = document.getElementById('customer-email');
     this.addEventListener('click', (event) => {
       event.preventDefault();
       const cartItems = this.closest('cart-items') || this.closest('cart-drawer-items');
@@ -11,12 +10,7 @@ class CartRemoveButton extends HTMLElement {
   }
 }
 
-const test_session = await Shopify.Utils.loadCurrentSession(request, response);
-
-await User.current({
-  session: test_session,
-});
-
+userEmail2 = document.getElementById('customer-email');
 
 customElements.define('cart-remove-button', CartRemoveButton);
 
@@ -73,7 +67,8 @@ class CartItems extends HTMLElement {
       console.log(name);
     fetch('https://jsonplaceholder.typicode.com/todos/1')
     .then((response) => {
-      console.log("ahoy1");
+      console.log(userEmail2);
+      console.log(userEmail);
       return response.json();
     })
     .then((json) => {
