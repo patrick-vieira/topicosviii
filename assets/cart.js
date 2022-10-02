@@ -33,7 +33,7 @@ class CartItems extends HTMLElement {
     var value = event.target.value;
     
     if(value > 1) {
-      value = 3;
+      value = 1;
     }
 
     // aqui bloqueia o que vai ser enviado.
