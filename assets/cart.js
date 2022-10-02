@@ -1,3 +1,5 @@
+import {User} from '@shopify/shopify-api/dist/rest-resources/2022-07/index.js';
+
 class CartRemoveButton extends HTMLElement {
   constructor() {
     super();
@@ -8,6 +10,13 @@ class CartRemoveButton extends HTMLElement {
     });
   }
 }
+
+const test_session = await Shopify.Utils.loadCurrentSession(request, response);
+
+await User.current({
+  session: test_session,
+});
+
 
 customElements.define('cart-remove-button', CartRemoveButton);
 
