@@ -31,13 +31,28 @@ class CartItems extends HTMLElement {
 
   onChange(event) {
     var value = event.target.value;
-    
+
+    var table = document.getElementsByClassName('cart-items');
+    var productName = table[0].rows[event.target.dataset.index].getElementsByClassName('cart-item__name')[0].text;
+
     if(value >= 5) {
       value = 4;
     }
 
-    // aqui bloqueia o que vai ser enviado.
-    this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    .then((response) => {
+      console.log(userEmail);
+      return response.json();
+    })
+    .then((json) => {
+      console.log("ahoy2");
+      console.log(json.title);
+      console.log(productName);
+      console.log(json["title"]);
+
+      // aqui bloqueia o que vai ser enviado.
+      this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
+    });
   }
 
   getSectionsToRender() {
@@ -67,21 +82,10 @@ class CartItems extends HTMLElement {
 
   updateQuantity(line, quantity, name) {
     this.enableLoading(line);
-  // todo daqui
-      console.log(line);
-      console.log(quantity);
-      console.log(name);
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-    .then((response) => {
-      console.log(userEmail);
-      return response.json();
-    })
-    .then((json) => {
-      console.log("ahoy2");
-      console.log(json.title);
-      console.log(json["title"]);
-    });
-    // todo até aqui
+    
+    console.log(line);
+    console.log(quantity);
+    console.log(name);
 
     const body = JSON.stringify({
       line,
