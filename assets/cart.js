@@ -32,8 +32,8 @@ class CartItems extends HTMLElement {
   onChange(event) {
     var value = event.target.value;
     
-    if(value > 1) {
-      value = 1;
+    if(value >= 5) {
+      value = 4;
     }
 
     // aqui bloqueia o que vai ser enviado.
