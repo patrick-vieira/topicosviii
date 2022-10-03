@@ -39,16 +39,29 @@ class CartItems extends HTMLElement {
       value = 4;
     }
 
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    const params = {
+      email: userEmail,
+      product: productName, 
+    };
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify( params )  
+    };
+
+    // fetch('https://jsonplaceholder.typicode.com/todos/1')
+    fetch('http://localhost:8000/topicos', options)
     .then((response) => {
       console.log(userEmail);
       return response.json();
     })
     .then((json) => {
       console.log("ahoy2");
-      console.log(json.title);
+      console.log(json.quantity);
+      console.log(json.message);
       console.log(productName);
-      console.log(json["title"]);
+      console.log(json["quantity"]);
+      console.log(json["message"]);
 
       // aqui bloqueia o que vai ser enviado.
       this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
