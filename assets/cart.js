@@ -47,11 +47,11 @@ class CartItems extends HTMLElement {
     const options = {
         method: 'POST',
         body: JSON.stringify( params ),
-        mode: 'no-cors',
     };
 
     // fetch('https://jsonplaceholder.typicode.com/todos/1')
-    fetch('http://localhost:8000/topicos', options)
+    // fetch('http://localhost:8000/topicos', options)
+    fetch('https://633b710bc1910b5de0c53eff.mockapi.io/api/v1/products', options)
     .then((response) => {
       console.log(userEmail);
       return response.json();
