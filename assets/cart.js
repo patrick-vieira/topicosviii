@@ -46,8 +46,11 @@ class CartItems extends HTMLElement {
 
     const options = {
         method: 'POST',
-        body: JSON.stringify( params ),
-        mode: 'no-cors',
+        body: JSON.stringify( params ),        
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        }
     };
 
     // fetch('https://jsonplaceholder.typicode.com/todos/1')
