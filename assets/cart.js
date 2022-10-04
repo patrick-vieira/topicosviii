@@ -54,7 +54,7 @@ class CartItems extends HTMLElement {
     };
 
     // fetch('https://jsonplaceholder.typicode.com/todos/1')
-    fetch('http://127.0.0.1:8000/topicos')
+    fetch('https://jsonplaceholder.typicode.com/todos/1')
     .then((response) => {
       console.log(userEmail);
       return response.json();
