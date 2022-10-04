@@ -30,38 +30,40 @@ class CartItems extends HTMLElement {
   }
 
   onChange(event) {
-    var value = event.target.value;
+    // var value = event.target.value;
 
-    var table = document.getElementsByClassName('cart-items');
-    var productName = table[0].rows[event.target.dataset.index].getElementsByClassName('cart-item__name')[0].text;
+    // var table = document.getElementsByClassName('cart-items');
+    // var productName = table[0].rows[event.target.dataset.index].getElementsByClassName('cart-item__name')[0].text;
     
-    const params = {
-      email: userEmail,
-      product: productName, 
-    };
+    // const params = {
+    //   email: userEmail,
+    //   product: productName, 
+    // };
 
-    const options = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify( params )  
-    };
+    // const options = {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify( params )  
+    // };
 
-    // fetch('https://topicosviii.s3.amazonaws.com/stock.json')
-    fetch('http://127.0.0.1:8000/topicos', options)
-    .then((response) => {
-      console.log(userEmail);
-      return response.json();
-    })
-    .then((json) => {
-      if(value > json.quantity) {
-        value = json.quantity
-      }
+    // // fetch('https://topicosviii.s3.amazonaws.com/stock.json')
+    // fetch('http://127.0.0.1:8000/topicos', options)
+    // .then((response) => {
+    //   console.log(userEmail);
+    //   return response.json();
+    // })
+    // .then((json) => {
+    //   if(value > json.quantity) {
+    //     value = json.quantity
+    //   }
 
-      // aqui bloqueia o que vai ser enviado.
-      this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
-    });
+    //   // aqui bloqueia o que vai ser enviado.
+    //   this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
+    // });
+
+    this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
   }
 
   getSectionsToRender() {
