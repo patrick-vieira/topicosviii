@@ -9,7 +9,7 @@ class CartRemoveButton extends HTMLElement {
   }
 }
 
-userEmail = document.getElementById('customer-email');
+userEmail = document.getElementById('customer-email').textContent;
 
 customElements.define('cart-remove-button', CartRemoveButton);
 
