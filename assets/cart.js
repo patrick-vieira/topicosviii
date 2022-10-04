@@ -35,8 +35,19 @@ class CartItems extends HTMLElement {
     var table = document.getElementsByClassName('cart-items');
     var productName = table[0].rows[event.target.dataset.index].getElementsByClassName('cart-item__name')[0].text;
 
+    
+    const params = {
+      email: userEmail,
+      product: productName, 
+    };
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify( params )  
+    };
+
     // fetch('https://topicosviii.s3.amazonaws.com/stock.json')
-    fetch('http://127.0.0.1:8000/topicos')
+    fetch('http://127.0.0.1:8000/topicos', options)
     .then((response) => {
       console.log(userEmail);
       return response.json();
