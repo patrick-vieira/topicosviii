@@ -35,7 +35,8 @@ class CartItems extends HTMLElement {
     var table = document.getElementsByClassName('cart-items');
     var productName = table[0].rows[event.target.dataset.index].getElementsByClassName('cart-item__name')[0].text;
 
-    fetch('https://topicosviii.s3.amazonaws.com/stock.json')
+    // fetch('https://topicosviii.s3.amazonaws.com/stock.json')
+    fetch('http://127.0.0.1:8000/topicos')
     .then((response) => {
       console.log(userEmail);
       return response.json();
@@ -57,7 +58,7 @@ class CartItems extends HTMLElement {
       for(let i = 0; i < stock.length; i++) {
         let stockProduct = stock[i];
     
-        console.log(stockProduct.name);
+        console.log(stockProduct.product);
         console.log(stockProduct.quantity);
         console.log(stockProduct.productId);
         
