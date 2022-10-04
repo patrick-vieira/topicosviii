@@ -43,7 +43,7 @@ class CartItems extends HTMLElement {
     const options = {
         method: 'POST',
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify( params )  
     };
