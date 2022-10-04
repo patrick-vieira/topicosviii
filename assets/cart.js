@@ -34,7 +34,6 @@ class CartItems extends HTMLElement {
 
     var table = document.getElementsByClassName('cart-items');
     var productName = table[0].rows[event.target.dataset.index].getElementsByClassName('cart-item__name')[0].text;
-
     
     const params = {
       email: userEmail,
@@ -53,29 +52,8 @@ class CartItems extends HTMLElement {
       return response.json();
     })
     .then((json) => {
-      var stock;
-
-      for(let i = 0; i < json.length; i++) {
-        let obj = json[i];
-    
-        console.log(obj.user);
-        
-        if(obj.user == userEmail) {
-          stock = obj.stock;
-        }
-      }
-
-      
-      for(let i = 0; i < stock.length; i++) {
-        let stockProduct = stock[i];
-    
-        console.log(stockProduct.product);
-        console.log(stockProduct.quantity);
-        console.log(stockProduct.productId);
-        
-        if(stockProduct.name == productName) {
-          value = stockProduct.quantity;
-        }
+      if(value > json.quantity) {
+        value = json.quantity
       }
 
       // aqui bloqueia o que vai ser enviado.
