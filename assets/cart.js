@@ -35,37 +35,36 @@ class CartItems extends HTMLElement {
     var table = document.getElementsByClassName('cart-items');
     var productName = table[0].rows[event.target.dataset.index].getElementsByClassName('cart-item__name')[0].text;
 
-    if(value >= 5) {
-      value = 4;
-    }
-
-    const params = {
-      email: userEmail,
-      product: productName, 
-    };
-
-    const options = {
-        method: 'GET',
-        body: JSON.stringify( params ),        
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-        }
-    };
-
-    // fetch('https://jsonplaceholder.typicode.com/todos/1')
-    fetch('https://633b710bc1910b5de0c53eff.mockapi.io/api/v1/products')
+    fetch('https://topicosviii.s3.amazonaws.com/stock.json')
     .then((response) => {
       console.log(userEmail);
       return response.json();
     })
     .then((json) => {
-      console.log("ahoy2");
-      console.log(json.quantity);
-      console.log(json.message);
-      console.log(productName);
-      console.log(json["quantity"]);
-      console.log(json["message"]);
+      var stock;
+
+      for(let i = 0; i < json.length; i++) {
+        let obj = json[i];
+    
+        console.log(obj.user);
+        
+        if(obj.user == userEmail) {
+          stock = obj.stock;
+        }
+      }
+
+      
+      for(let i = 0; i < stock.length; i++) {
+        let stockProduct = stock[i];
+    
+        console.log(stockProduct.name);
+        console.log(stockProduct.quantity);
+        console.log(stockProduct.productId);
+        
+        if(stockProduct.name == productName) {
+          value = stockProduct.quantity;
+        }
+      }
 
       // aqui bloqueia o que vai ser enviado.
       this.updateQuantity(event.target.dataset.index, value, document.activeElement.getAttribute('name'));
