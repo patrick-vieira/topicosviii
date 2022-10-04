@@ -46,10 +46,15 @@ class CartItems extends HTMLElement {
 
     const options = {
         method: 'GET',
+        body: JSON.stringify( params ),        
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        }
     };
 
     // fetch('https://jsonplaceholder.typicode.com/todos/1')
-    fetch('http://127.0.0.1:8000/topicos', options)
+    fetch('http://127.0.0.1:8000/topicos')
     .then((response) => {
       console.log(userEmail);
       return response.json();
