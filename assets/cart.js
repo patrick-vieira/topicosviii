@@ -48,10 +48,10 @@ class CartItems extends HTMLElement {
         body: JSON.stringify( params )  
     };
 
+    console.log(userEmail);
     // fetch('https://topicosviii.s3.amazonaws.com/stock.json')
     fetch('http://ec2-54-145-139-31.compute-1.amazonaws.com:8000/topicos', options)
     .then((response) => {
-      console.log(userEmail);
       return response.json();
     })
     .then((json) => {
