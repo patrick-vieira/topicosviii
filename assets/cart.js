@@ -42,7 +42,6 @@ class CartItems extends HTMLElement {
 
     const options = {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -50,8 +49,8 @@ class CartItems extends HTMLElement {
     };
 
     console.log(userEmail);
-    // fetch('https://topicosviii.s3.amazonaws.com/stock.json')
-    fetch('http://ec2-54-145-139-31.compute-1.amazonaws.com:8000/topicos', options)
+    // fetch('http://ec2-54-145-139-31.compute-1.amazonaws.com:8000/topicos', options)
+    fetch('http://127.0.0.1:8000/topicos', options)
     .then((response) => {
       return response.json();
     })
